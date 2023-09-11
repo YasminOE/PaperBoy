@@ -1,15 +1,23 @@
 import _ from 'lodash';
 import './style.css';
+import { loadPage } from './modules/inital-load-page';
+import loadLogin from './modules/login';
+import loadSignup from './modules/signup';
+
+ function addNavEvents(){
+   const signUpBtn = document.getElementById('signBtn')
+  const logInBtn = document.getElementById('logBtn')
+
+  signUpBtn.addEventListener('click', loadSignup);
+  logInBtn.addEventListener('click', loadLogin)
+}
 
 
- function component() {
-   const element = document.createElement('div');
+init();
 
-  // Lodash, now imported by this script
-   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-   element.classList.add('hello');
 
-   return element;
+ function init(){
+  // loadPage();
+loadLogin();
+  addNavEvents();
  }
-
- document.body.appendChild(component());

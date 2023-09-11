@@ -1,3 +1,154 @@
-.hello {
-  color: red;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+/* the first page style */
+
+div#content > div#main-page {
+  height: 100vh;
+  background: #E5DBDC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#content > div#main-page > #logo {
+  width: 20%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+
+div#content > div#main-page > ul#buttonsUl{
+  padding: 30px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+div#content > div#main-page > ul#buttonsUl > button{
+  padding: 10px 40px;
+  border-radius: 10px;
+  cursor: url('imgs/newspaper.svg'), auto;
+  border: 2px solid #002424;
+  color: #002424;
+  background: #f9fffaad;
+
+}
+
+div#content > div#main-page > ul#buttonsUl > button:hover{
+  margin: 0 10px;
+  transition: 1s all ease;
+  border: 2px solid #9CAC91;
+  background: #9CAC91;
+  color: #E5DBDC;
+}
+
+
+/* Login page  */
+div#content > div#login-content{
+  height: 100vh;
+  background: #E5DBDC;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  grid-template-rows: auto;
+  grid-template-areas: "head form";
+  gap: 30px;
+}
+
+div#content > div#login-content > div#head-area{
+  grid-area: head;
+  background: #fff5f621;
+  filter: blur(1.4px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
+
+}
+div#content > div#login-content > div#head-area:hover{
+  grid-area: head;
+  background: #0024244f;
+  /* background: #fff5f67e; */
+  filter: none;
+  transition: 1s all ease;
+  opacity: 1;
+  /* border: 1px solid red; */
+
+}
+
+div#login-content > div#head-area > img#head-img{
+  grid-area: head;
+  /* border: 1px solid red; */
+  width: 100%;
+  /* width: 70%; */
+  height: auto;
+  /* margin-top: 30px; */
+  opacity: 0.8;
+}
+
+div#login-content > div#head-area > img#head-img:hover{
+  transition: 1s all ease-in;
+  /* opacity: 1; */
+
+}
+
+div#login-content > div#head-area > p#head-text{
+  grid-area: head;
+  /* border: 1px solid red; */
+  font-weight: 400;
+  font-size:  5rem;
+  width: 400px;
+  margin: -110px 0 0 30px;
+  color: #fff5f6;
+}
+
+div#login-content > div#head-area > p#no-account{
+  grid-area: head;
+  color: #002424;
+  margin: 30px 0 0 40px;
+}
+div#login-content > div#head-area > p#no-account > a{
+  color: #002424;
+  font-weight: 700;
+}
+div#login-content > div#head-area > p#no-account > a:hover{
+  color: #E5DBDC;
+}
+
+div#content > div#login-content > div#form-area{
+  grid-area: form;
+  border: 1px solid red;
+
+  
+}
+
+div#login-content > div#form-area > form{
+  border: 1px solid red;
+  height: 100vh;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#login-content > div#form-area > form > input{
+  padding:15px 100px;
+  margin: 20px 0;
+  color: #002424;
+  background: #fff5f621;
+  border: none;
+  border-bottom: 2px solid #002424;
+}
+div#login-content > div#form-area > form > input:focus{
+  outline: #9CAC91;
+  border: none;
 }

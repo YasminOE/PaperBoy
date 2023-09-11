@@ -29,8 +29,8 @@ module.exports = {
     loader: 'file-loader',
     options: {
       name: '[name].[ext]',
-      outputPath: 'icons/', // Specify the output directory for images
-      publicPath: 'icons/', // Specify the public path for images
+      outputPath: 'imgs/', // Specify the output directory for images
+      publicPath: 'imgs/', // Specify the public path for images
     },
   },
          },
