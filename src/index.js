@@ -17,7 +17,6 @@ init();
 
 
  function init(){
-  // loadPage();
-loadLogin();
+  loadPage();
   addNavEvents();
  }

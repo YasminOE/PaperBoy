@@ -52,6 +52,10 @@ div#content > div#main-page > ul#buttonsUl > button:hover{
 }
 
 
+
+
+
+
 /* Login page  */
 div#content > div#login-content{
   height: 100vh;
@@ -84,22 +88,6 @@ div#content > div#login-content > div#head-area:hover{
 
 }
 
-div#login-content > div#head-area > img#head-img{
-  grid-area: head;
-  /* border: 1px solid red; */
-  width: 100%;
-  /* width: 70%; */
-  height: auto;
-  /* margin-top: 30px; */
-  opacity: 0.8;
-}
-
-div#login-content > div#head-area > img#head-img:hover{
-  transition: 1s all ease-in;
-  /* opacity: 1; */
-
-}
-
 div#login-content > div#head-area > p#head-text{
   grid-area: head;
   /* border: 1px solid red; */
@@ -125,30 +113,174 @@ div#login-content > div#head-area > p#no-account > a:hover{
 
 div#content > div#login-content > div#form-area{
   grid-area: form;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
-  
 }
 
 div#login-content > div#form-area > form{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100vh;
   padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 30px;
 }
 
 div#login-content > div#form-area > form > input{
-  padding:15px 100px;
+  padding:15px 60px;
   margin: 20px 0;
   color: #002424;
   background: #fff5f621;
   border: none;
   border-bottom: 2px solid #002424;
+  font-size: 1.2rem;
 }
+
 div#login-content > div#form-area > form > input:focus{
-  outline: #9CAC91;
+  outline: #E5DBDC;
+  border: 2px solid #002424;
+  border-radius: 7px;
+  transition: 0.8s all ease-in-out;
+}
+
+div#login-content > div#form-area > form > button{
+  padding: 10px 40px;
+  border-radius: 10px;
+  cursor: url('imgs/newspaper.svg'), auto;
+  border: 2px solid #002424;
+  color: #002424;
+  background: #f9fffaad;
+  
+}
+div#login-content > div#form-area > form > button:hover{
+  margin: 20px;
+  transition: 1s all ease;
+  border: 2px solid #9CAC91;
+  background: #9CAC91;
+  color: #E5DBDC;
+}
+
+
+
+
+
+
+/* sign Up page */
+
+div#content > div#signup-content{
+  height: 100vh;
+  background: #E5DBDC;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  grid-template-rows: auto;
+  grid-template-areas: "head form";
+  gap: 30px;
+}
+
+div#content > div#signup-content > div#head-area{
+  grid-area: head;
+  background: #fff5f621;
+  filter: blur(1.4px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
+
+}
+div#content > div#signup-content > div#head-area:hover{
+  grid-area: head;
+  background: #00242464;
+  /* background: #fff5f67e; */
+  filter: none;
+  transition: 1s all ease;
+  opacity: 1;
+  filter: none;
+  /* border: 1px solid red; */
+
+}
+
+
+div#signup-content > div#head-area > p#head-text{
+  grid-area: head;
+  /* border: 1px solid red; */
+  font-weight: 400;
+  font-size:  4rem;
+  width: 400px;
+  margin: 0 0 0 30px;
+  color: #fff5f6;
+}
+
+div#signup-content > div#head-area > p#account{
+  grid-area: head;
+  color: #002424;
+  margin: 30px 0 0 40px;
+}
+div#signup-content> div#head-area > p#account > a{
+  color: #002424;
+  font-weight: 700;
+}
+div#signup-content > div#head-area > p#account > a:hover{
+  color: #E5DBDC;
+}
+
+div#content > div#signup-content> div#form-area{
+  grid-area: form;
+  /* border: 1px solid red; */
+
+}
+
+div#signup-content > div#form-area > form{
+  /* border: 1px solid red; */
+  height: 100vh;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+div#signup-content > div#form-area > form > input{
+  padding:15px 60px;
+  margin: 20px 0;
+  color: #002424;
+  background: #fff5f621;
   border: none;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #002424;
+}
+
+div#signup-content > div#form-area > form > input:focus{
+  outline: #E5DBDC;
+  border-radius: 7px;
+  border: 2px solid #002424;
+  transition: 0.8s all ease-in-out;
+}
+
+div#signup-content > div#form-area > form > button{
+  padding: 10px 40px;
+  border-radius: 10px;
+  cursor: url('imgs/newspaper.svg'), auto;
+  border: 2px solid #002424;
+  color: #002424;
+  background: #f9fffaad;
+  
+}
+div#signup-content > div#form-area > form > button:hover{
+  margin: 20px;
+  transition: 1s all ease;
+  border: 2px solid #9CAC91;
+  background: #9CAC91;
+  color: #E5DBDC;
+}
+
+div#signup-content > div#form-area > form > p#successSignUp{
+  border: 1px solid red;
+  color: #fff5f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
