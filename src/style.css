@@ -290,12 +290,15 @@ div#signup-content > div#form-area > form > p{
   display: flex;
   align-items: center;
   justify-content: center;
-  visibility: hidden;
 }
 
-div#signup-content > div#form-area > form > p.success{
-  visibility: visible;
+
+div#signup-content > div#form-area > form:invalid > p.error{
   transition: 1s all ease-in;
+  visibility: visible;
+  color: #d72215;
+  align-items: center;
+  justify-content: center;
 
 }
 

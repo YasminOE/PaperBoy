@@ -1,3 +1,4 @@
+import signupHandler ,{ errorMessages } from "./user";
 function createSignupPage(){
   // areas
   const signupContent = document.createElement('div')
@@ -36,14 +37,14 @@ function createSignupPage(){
 // form content
   const signForm = document.createElement('form');
   signForm.setAttribute('class', 'sign-form');
-  signForm.action = '';
-  signForm.method = 'Post';
+  signForm.action = '#';
+  signForm.method = 'POST';
   signForm.name = 'signForm';
   formArea.appendChild(signForm);
 
   const message = document.createElement('p');
-  message.setAttribute = ('id', 'successMsg')
-  message.innerHTML = 'Yay <span class="material-symbols-outlined">sentiment_very_satisfied</span>, You\'re a member!';
+  message.setAttribute('id', 'successMsg');
+  message.innerHTML = 'Yay <span class="material-symbols-outlined">sentiment_very_satisfied</span>, You\'re a step closer!';
   signForm.appendChild(message);
 
   const signName = document.createElement('input')
@@ -55,7 +56,7 @@ function createSignupPage(){
     required: true,
     value: ''
   });
-  signName.pattern = '\w{3,16}';
+  signName.pattern = '^[A-Za-z\\s]{3,}$';
   signForm.appendChild(signName);
 
   const signEmail = document.createElement('input')
@@ -66,7 +67,7 @@ function createSignupPage(){
     required: true,
     value: ''
   });
-  signEmail.pattern = '[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$';
+  // signEmail.pattern = '^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$';
   signForm.appendChild(signEmail);
 
   const signPassword = document.createElement('input')
@@ -78,7 +79,6 @@ function createSignupPage(){
     value: ''
 
   });
-  signPassword.pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$';
   signForm.appendChild(signPassword);
 
 
@@ -91,7 +91,6 @@ function createSignupPage(){
     value: ''
 
   });
-  confirmPassword.pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$';
   signForm.appendChild(confirmPassword);
 
 
@@ -121,17 +120,26 @@ function createSignupPage(){
 
 //   return line;
 // }
-
-
-export default function loadSignup(){
+export default function loadSignup() {
   const content = document.getElementById('content');
   const signupPage = createSignupPage();
-  // const message = createSuccessMessage();
 
   content.textContent = '';
   content.appendChild(signupPage);
-  // signupPage.appendChild(message);
 
+  // // Wrap the form-related code in a DOMContentLoaded event listener
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   // Select the form element
+  //   const signupForm = document.getElementById('signup-form');
+
+  //   if (signupForm) {
+  //     // Add an event listener for form submission
+  //     signupForm.addEventListener('submit', function (event) {
+  //       event.preventDefault();
+  //       // Handle form submission here
+  //     });
+  //   }
+  // });
 
   return content;
 }

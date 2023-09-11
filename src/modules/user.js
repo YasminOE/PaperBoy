@@ -1,10 +1,10 @@
-import { update } from "lodash";
+// user.js
 
-export function User(fullName, email, password, confirmPassword){
-    this.fullName = fullName;
-    this.email = email;
-    this.password = password;
-    this.confirmPassword = confirmPassword;
+export function User(fullName, email, password, confirmPassword) {
+  this.fullName = fullName;
+  this.email = email;
+  this.password = password;
+  this.confirmPassword = confirmPassword;
 }
 
 export class UsersManager {
@@ -26,92 +26,75 @@ export class UsersManager {
     this.updateLoadUsers();
   }
 }
+function displayErrMessage(){
+  const errorMessages = userForm.querySelector('#successMsg');
+  errorMessages.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> please double-check your registration!';
+  errorMessages.classList.add('error');
 
-function errorMessages(btn, someFunction){
- 
-  userForm = document.querySelector('.sign-form');
-  errorFace = userForm.querySelector('#successMsg');
-  nameError = userForm.querySelector('.sign-name');
-  emailError = userForm.querySelector('.sign-email');
-  passwordError = userForm.querySelector('.sign-password');
-  confirmPasswordError = userForm.querySelector('.confirm-sign-password');
+  return errorMessages;
+}
 
-  btn = userForm.querySelector('.sign-up-btn');
-  btn.addEventListener('click' , () => {
+export function validateForm() {
+  const userForm = document.querySelector('.sign-form');
+  const inputFields = userForm.querySelectorAll('input');
+  const errorMessages = userForm.querySelector('#successMsg');
+  let valid = true;
 
-    if(nameError.value === ValidityState.patternMismatch){
-      errorFace.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> Looks like you\'ev missed something!';
-      errorFace.className.add('error');
-      nameError.className.add('invalid');
+  inputFields.forEach(inputField => {
+    if(inputField.value == ''){
+      inputField.classList.add('invalid');
+      errorMessages.setCustomValidity(displayErrMessage());
+      valid = false;
+      console.log('I am working');
     }
-    else if(emailError.value === ValidityState.patternMismatch){
-      errorFace.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> Looks like you\'ev missed something!';
-      errorFace.className.add('error');
-      nameError.className.add('invalid');
+    else if (!inputField.checkValidity()) {
+      inputField.classList.add('invalid');
+      errorMessages.setCustomValidity(displayErrMessage());
+      console.log('I am working');
+      error.push('not the value we are looking for');
+      valid = false;
     }
+     else {
+      inputField.classList.remove('invalid'); // Remove 'invalid' class on valid input
+      console.log('things looks good');
+    }
+  });
+
+  return valid;
+}
+
+
+export function registerUser(userManager, form) {
+  form = document.querySelector('.sign-form');
+  if (form) {
+    console.log('we are in signup page');
+    let nameInput = form.querySelector('.sign-name');
+    let emailInput = form.querySelector('.sign-email');
+    let passwordInput = form.querySelector('.sign-password');
+    let confirmPasswordInput = form.querySelector('.confirm-sign-password');
   
-    else if(passwordError.value === ValidityState.patternMismatch){
-      errorFace.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> Looks like you\'ev missed something!';
-      errorFace.className.add('error');
-      nameError.className.add('invalid');
-    }
-    else if(passwordError.value !== confirmPasswordError.value){
-      errorFace.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> Looks like you\'ev missed something!';
-      errorFace.className.add('error');
-      nameError.className.add('invalid');
-    }
-    else{
-      someFunction;
-      errorFace.className.add('success');
-    }
+    let user = new User(nameInput.value, emailInput.value,passwordInput.value, confirmPasswordInput.value);
+  
+    userManager.addUser(user);
+    userManager.updateLoadUsers();
+    console.log(userManager);
+  
+    return user;
 
-  })
-
-  return userForm;
+  }else{
+  console.log('we are not in signup page yet');
+  }
 }
 
-export function signupHandler(manager, message){
-// i need this function to keep an eye when the 
-let form = document.querySelector('.sign-form');
-let nameInput = form.querySelector('.sign-name').value;
-let emailInput = form.querySelector('.sign-email').value;
-let passwordInput = form.querySelector('.sign-password').value;
-let confirmPasswordInput = form.querySelector('.confirm-sign-password').value;
-
-let user = new User(nameInput, emailInput,passwordInput, confirmPasswordInput);
-
-
-  manager.addUser(user);
-  manager.updateLoadUsers();
-  console.log(manager);
-
-  message;
-
-  return user;
-}
-
-// export function loginHandler(manager){
-//   if (manager.users.email === user.email || manager.users.password === user.password) {
-//     console.log('user\'s emails and password are correct');
-//     return true;
-//   }
-//   else{
-//     console.log("wrong");
-//     return false;
-//   }
-// }
-
-export default function formsHandler(){
-
+export default function formsHandler() {
   const theManger = new UsersManager();
-  const theSuccessMsg = document.querySelector('#successMsg');
-  // theSuccessMsg;
-  const theSignBtn = document.querySelector('.sign-up-btn');
+  // const theSuccessMsg = document.querySelector('#successMsg');
+  // const theSignBtn = document.querySelector('.sign-up-btn');
+  const theSignForm = document.querySelector('.sign-form');
 
-  const getSignupInfo = signupHandler(theManger, theSuccessMsg)
-  const checkSignUpErrors = errorMessages(theSignBtn, getSignupInfo)
+  validateForm();
 
-  return {checkSignUpErrors};
-
-
+  registerUser(theManger, theSignForm);
+  
+  return { validateForm , registerUser}; // Placeholder for now
 }
