@@ -259,6 +259,12 @@ div#signup-content > div#form-area > form > input:focus{
   transition: 0.8s all ease-in-out;
 }
 
+div#signup-content > div#form-area > form > input.invalid{
+  border-bottom: 2px solid #d72215;
+
+}
+
+
 div#signup-content > div#form-area > form > button{
   padding: 10px 40px;
   border-radius: 10px;
@@ -268,6 +274,9 @@ div#signup-content > div#form-area > form > button{
   background: #f9fffaad;
   
 }
+
+
+
 div#signup-content > div#form-area > form > button:hover{
   margin: 20px;
   transition: 1s all ease;
@@ -276,10 +285,24 @@ div#signup-content > div#form-area > form > button:hover{
   color: #E5DBDC;
 }
 
-div#signup-content > div#form-area > form > p#successSignUp{
-  border: 1px solid red;
-  color: #fff5f6;
+div#signup-content > div#form-area > form > p{
+  color: #002424;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+div#signup-content > div#form-area > form > p.success{
+  visibility: visible;
+  transition: 1s all ease-in;
+
+}
+
+div#signup-content > div#form-area > form > p.error{
+  transition: 1s all ease-in;
+  visibility: visible;
+  color: #d72215;
   align-items: center;
   justify-content: center;
 

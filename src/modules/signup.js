@@ -42,7 +42,7 @@ function createSignupPage(){
   formArea.appendChild(signForm);
 
   const message = document.createElement('p');
-  message.setAttribute = ('id', 'successSignUp')
+  message.setAttribute = ('id', 'successMsg')
   message.innerHTML = 'Yay <span class="material-symbols-outlined">sentiment_very_satisfied</span>, You\'re a member!';
   signForm.appendChild(message);
 
@@ -52,8 +52,10 @@ function createSignupPage(){
     class: 'sign-name',
     type: 'text',
     placeholder: 'full name',
+    required: true,
     value: ''
   });
+  signName.pattern = '\w{3,16}';
   signForm.appendChild(signName);
 
   const signEmail = document.createElement('input')
@@ -61,8 +63,10 @@ function createSignupPage(){
     class: 'sign-email',
     type: 'email',
     placeholder: 'example@gmail.com',
+    required: true,
     value: ''
   });
+  signEmail.pattern = '[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$';
   signForm.appendChild(signEmail);
 
   const signPassword = document.createElement('input')
@@ -70,9 +74,11 @@ function createSignupPage(){
     class: 'sign-password',
     type: 'password',
     placeholder: '*****',
+    required: true,
     value: ''
 
   });
+  signPassword.pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$';
   signForm.appendChild(signPassword);
 
 
@@ -81,9 +87,11 @@ function createSignupPage(){
     class: 'confirm-sign-password',
     type: 'password',
     placeholder: '*****',
+    required: true,
     value: ''
 
   });
+  confirmPassword.pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$';
   signForm.appendChild(confirmPassword);
 
 
