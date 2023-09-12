@@ -89,11 +89,16 @@ export function registerUser(userManager, form) {
 }
 
 export default function formsHandler() {
-  const theManger = new UsersManager();
-  // const theSuccessMsg = document.querySelector('#successMsg');
-  // const theSignBtn = document.querySelector('.sign-up-btn');
+  const theManager = new UsersManager();
+  const theSignForm = document.querySelector('.sign-form'); // Add this line to get the form element
 
-  registerUser(theManger, theSignForm);
-  
-  return {registerUser}; // Placeholder for now
+  // You should check if the form exists before calling registerUser
+  if (theSignForm) {
+    registerUser(theManager, theSignForm);
+  } else {
+    console.log('The signup form does not exist on this page.');
+  }
+
+  return { registerUser };
 }
+

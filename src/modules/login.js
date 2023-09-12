@@ -30,7 +30,7 @@ function createLoginPage(){
   const noAccount = document.createElement('p')
   noAccount.setAttribute('id', 'no-account');
   // noAccount.href = '#';
-  noAccount.innerHTML = 'Don\'t have an account? <a href="#">Join now.</a>';
+  noAccount.innerHTML = 'Don\'t have an account? <span>Join now.</span>';
   headArea.appendChild(noAccount);
 
 // form content

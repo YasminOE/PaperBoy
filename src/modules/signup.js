@@ -1,4 +1,5 @@
-import signupHandler ,{ errorMessages } from "./user";
+import { loadSuccess } from "./succuss";
+import signupHandler ,{ UsersManager, errorMessages, registerUser } from "./user";
 function createSignupPage(){
   // areas
   const signupContent = document.createElement('div')
@@ -31,13 +32,13 @@ function createSignupPage(){
   const account = document.createElement('p')
   account.setAttribute('id', 'account');
   // account.href = '#';
-  account.innerHTML = 'You have an account? <a href="#">Login.</a>';
+  account.innerHTML = 'You have an account? <span>Login.</span>';
   headArea.appendChild(account);
 
 // form content
   const signForm = document.createElement('form');
   signForm.setAttribute('class', 'sign-form');
-  signForm.action = '#';
+  signForm.action = loadSuccess();
   signForm.method = 'POST';
   signForm.name = 'signForm';
   formArea.appendChild(signForm);
@@ -140,6 +141,8 @@ export default function loadSignup() {
   content.appendChild(signupPage);
 
   const form = document.querySelector('.sign-form');
+  const userManager = new UsersManager();
+
 
   function validateSignForm(formSelector) {
     const formElement = formSelector; // Use the provided form element directly
@@ -202,8 +205,15 @@ export default function loadSignup() {
   
     formElement.setAttribute('novalidate', '');
     formElement.addEventListener('submit', event => {
-      event.preventDefault();
-      validateFullForm(formElement);
+      // event.preventDefault();
+      const validForm = validateFullForm(formElement);
+
+      if (!validForm) {
+        event.preventDefault();
+        return user;
+      } else {
+        console.log('Form is valid');
+      }
     });
   
     const validateFullForm = formToValidate => {
@@ -228,7 +238,6 @@ export default function loadSignup() {
     };
   }
   
-  validateSignForm(form);
   
   validateSignForm(form);
 

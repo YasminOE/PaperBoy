@@ -11,17 +11,24 @@ function addNavEvents() {
   signUpBtn.addEventListener('click', () => {
     // Load the signup page
     loadSignup();
+    const getLogin = document.querySelector('#account');
+    getLogin.addEventListener('click', loadLogin);
 
-    // Handle signup form submission
-    // const userManager = new UsersManager();
   });
 
-  logInBtn.addEventListener('click', loadLogin);
+  logInBtn.addEventListener('click', () => {
+    loadLogin();
+    const getSignup = document.querySelector('#no-account');
+    getSignup.addEventListener('click', loadSignup);
+
+  });
 }
 
 function init() {
   loadPage();
   addNavEvents();
+
+
 }
 
 init();
