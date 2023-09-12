@@ -1,5 +1,5 @@
 import { loadSuccess } from "./succuss";
-import signupHandler ,{ UsersManager, errorMessages, registerUser } from "./user";
+import signupHandler ,{ UsersManager, errorMessages, registerUser, User } from "./user";
 function createSignupPage(){
   // areas
   const signupContent = document.createElement('div')
@@ -118,22 +118,30 @@ function createSignupPage(){
   return signupContent;
 }
 
-// function createSuccessMessage(){
-//   const message = document.createElement('p');
-//   message.setAttribute = ('id', 'successSignUp')
-//   message.innerHTML = 'Yay <span class="material-symbols-outlined">sentiment_very_satisfied</span>, You\'er a member!';
-//   signForm.appendChild(message)
+       // if (user) {
 
-//   return message;
-// }
+        //   // formElement.action = loadSuccess(user.nameInput);
+        //   successPage = loadSuccess(user.nameInput);
+        //   // formElement.submit();
+        //   content.innerHTML = "";
+        //   content.appendChild(successPage);
+        //   // window.location.href=loadSuccess(user.nameInput);
+        // }
+  
+  // {
+  //   attribute: 'minLength',
+  //   isValid: input => input.value && input.value.length >= parseInt(input.minLength, 10),
+  //   errorMessage: err => {
+  //     err.classList.add('error');
+  //     err.innerHTML = `Opps <span class="material-symbols-outlined">sentiment_sad</span>, value needs to be at least 8 characters.`;
+  //   },
+  // },
 
-// function goToLogin(LogPage){
-//   const line = document.getElementById('account');
-//   line.addEventListener('click', LogPage);
 
-//   return line;
-// }
+  
+
 export default function loadSignup() {
+  document.addEventListener('DOMContentLoaded', () => {
   const content = document.getElementById('content');
   const signupPage = createSignupPage();
 
@@ -141,32 +149,28 @@ export default function loadSignup() {
   content.appendChild(signupPage);
 
   const form = document.querySelector('.sign-form');
-  const userManager = new UsersManager();
+  const manager = new UsersManager();
+  const nameInput = form.querySelector('.sign-name');
+  const emailInput = form.querySelector('.sign-email');
+  const passwordInput = form.querySelector('.sign-password');
+  const confirmPasswordInput = form.querySelector('.confirm-sign-password');
 
+  function validateSignForm(formSelector, userManager) {
+    const formElement = formSelector;
+    const formInputs = Array.from(formElement.querySelectorAll('input'));
 
-  function validateSignForm(formSelector) {
-    const formElement = formSelector; // Use the provided form element directly
-  
     const validationOptions = [
-    {
-      attribute: 'required',
-      isValid: theInput => theInput.value.trim() !== '',
-      errorMessage: err => {
-        err.classList.add('error');
-        err.innerHTML = 'Oh <span class="material-symbols-outlined">sentiment_sad</span> , please double-check your registration!';
+      {
+        attribute: 'required',
+        isValid: theInput => theInput.value.trim() !== '',
+        errorMessage: err => {
+          err.classList.add('error');
+          err.innerHTML = 'Oh <span class="material-symbols-outlined">sentiment_sad</span>, please double-check your registration!';
+        },
       },
-    },
-    // {
-    //   attribute: 'minLength',
-    //   isValid: input => input.value && input.value.length >= parseInt(input.minLength, 10),
-    //   errorMessage: err => {
-    //     err.classList.add('error');
-    //     err.innerHTML = `Opps <span class="material-symbols-outlined">sentiment_sad</span>, value needs to be at least 8 characters.`;
-    //   },
-    // },
       {
         attribute: 'match',
-        isValid: input => input.value === document.querySelector('.sign-password').value,
+        isValid: input => input.value === formElement.querySelector('.sign-password').value,
         errorMessage: err => {
           err.classList.add('error');
           err.innerHTML = 'Opps <span class="material-symbols-outlined">sentiment_sad</span>, passwords don\'t match.';
@@ -184,50 +188,43 @@ export default function loadSignup() {
         }
       }
     ];
-  
-    const validateSingleInput = input => {
+
+    formElement.setAttribute('novalidate', '');
+
+    formInputs.forEach(input => {
+      input.addEventListener('blur', () => {
+        validateSingleInput(input);
+      });
+    });
+
+    function validateSingleInput(input) {
       const errorMsg = document.querySelector('#errorMsg');
-  
       let formError = false;
+
       for (const option of validationOptions) {
         if (input.hasAttribute(option.attribute) && !option.isValid(input)) {
           formError = true;
           option.errorMessage(errorMsg);
           input.classList.add('invalid');
-          console.log('i work');
         }
       }
       if (!formError) {
         input.classList.remove('invalid');
-        console.log('i work too');
       }
-    };
-  
-    formElement.setAttribute('novalidate', '');
-    formElement.addEventListener('submit', event => {
-      // event.preventDefault();
-      const validForm = validateFullForm(formElement);
+    }
 
-      if (!validForm) {
-        event.preventDefault();
-        return user;
-      } else {
-        console.log('Form is valid');
-      }
-    });
-  
-    const validateFullForm = formToValidate => {
+    function validateFullForm(formToValidate) {
       const formInputs = Array.from(formToValidate.querySelectorAll('input'));
-      let allInputsValid = true; // Track if all inputs are valid
-  
+      let allInputsValid = true;
+
       formInputs.forEach(input => {
         validateSingleInput(input);
-  
+
         if (input.classList.contains('invalid')) {
           allInputsValid = false;
         }
       });
-  
+
       // Only clear the errorMsg if all inputs are valid
       if (allInputsValid) {
         const errorMsg = document.querySelector('#errorMsg');
@@ -235,11 +232,47 @@ export default function loadSignup() {
         errorMsg.innerHTML = '';
         successMsg.classList.add('success');
       }
-    };
-  }
-  
-  
-  validateSignForm(form);
 
-  return content;
+      return allInputsValid;
+    }
+
+    formElement.addEventListener('submit', event => {
+      const valid = validateFullForm(formElement);
+
+      event.preventDefault(); // Prevent the default form submission
+      if (!valid) {
+        console.log('Form is invalid');
+      } else {
+        // Retrieve the input values inside the form submission event handler
+
+
+        console.log(nameInput, emailInput, passwordInput, confirmPasswordInput );
+        
+        // Get the form element's manager and register the user
+        const user = new User(
+          nameInput,
+          emailInput,
+          passwordInput, 
+          confirmPasswordInput
+        );
+    
+        userManager.addUser(user);
+        console.log(user);
+        manager.updateLoadUsers();
+        console.log(userManager);
+
+        // Redirect to the success page if needed
+        // formElement.action = loadSuccess(user.nameInput);
+        // successPage = loadSuccess(user.nameInput);
+        // content.innerHTML = "";
+        // content.appendChild(successPage);
+      }
+    });
+
+  }
+
+  validateSignForm(form, manager);
+
+  return { content, form };
+});
 }

@@ -50,16 +50,23 @@ function createButtonSec(){
 
 
 
-export function loadSuccess(){
+export function loadSuccess(uName){
   const content = document.getElementById('content');
 
   const main = createSuccessPage();
   content.appendChild(main);
 
-  const mainContent = createTextSec('Yasmin');
+  const mainContent = createTextSec(uName);
   main.appendChild(mainContent);
 
   const buttons = createButtonSec();
   main.appendChild(buttons);
+
+    if (uName) {
+      return 'success.html';
+    } else {
+      // Handle cases where fullName is undefined
+      return 'error.html';
+    }
 }
 

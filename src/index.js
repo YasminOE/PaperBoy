@@ -2,7 +2,8 @@ import './style.css';
 import { loadPage } from './modules/initial-load-page';
 import loadLogin from './modules/login';
 import loadSignup from './modules/signup';
-import formsHandler, { UsersManager } from './modules/user';
+import formsHandler, { UsersManager , registerUser } from './modules/user';
+import { loadSuccess } from './modules/succuss';
 
 function addNavEvents() {
   const signUpBtn = document.getElementById('signBtn');
@@ -13,6 +14,10 @@ function addNavEvents() {
     loadSignup();
     const getLogin = document.querySelector('#account');
     getLogin.addEventListener('click', loadLogin);
+    // const form = document.querySelector('.sign-form');
+    // if(form){
+      
+    // }
 
   });
 
@@ -25,8 +30,10 @@ function addNavEvents() {
 }
 
 function init() {
-  loadPage();
+  // loadPage();
+  loadSignup();
   addNavEvents();
+  loadSuccess();
 
 
 }
