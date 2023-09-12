@@ -21,10 +21,10 @@ PaperBoy is a web application designed to practice form validation and data hand
 
 ## Screenshots
 
-![Welcome Page](https://www.rawpixel.com/image/2310614/free-illustration-png-alone-animal-aside)
+[Welcome Page](https://www.rawpixel.com/image/2310614/free-illustration-png-alone-animal-aside)
 *Welcome Page Artwork*
 
-![PaperBoy Logo](https://www.beams.co.jp/global/news/detail/335)
+[PaperBoy Logo](https://www.beams.co.jp/global/news/detail/335)
 *PaperBoy Logo*
 
 
