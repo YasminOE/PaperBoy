@@ -103,11 +103,12 @@ div#login-content > div#head-area > p#no-account{
   color: #002424;
   margin: 30px 0 0 40px;
 }
-div#login-content > div#head-area > p#no-account > a{
+div#login-content > div#head-area > p#no-account > span{
   color: #002424;
   font-weight: 700;
+  text-decoration: underline;
 }
-div#login-content > div#head-area > p#no-account > a:hover{
+div#login-content > div#head-area > p#no-account > span:hover{
   color: #E5DBDC;
 }
 
@@ -217,11 +218,12 @@ div#signup-content > div#head-area > p#account{
   color: #002424;
   margin: 30px 0 0 40px;
 }
-div#signup-content> div#head-area > p#account > a{
+div#signup-content> div#head-area > p#account > span{
   color: #002424;
   font-weight: 700;
+  text-decoration: underline;
 }
-div#signup-content > div#head-area > p#account > a:hover{
+div#signup-content > div#head-area > p#account > span:hover{
   color: #E5DBDC;
 }
 
@@ -259,6 +261,12 @@ div#signup-content > div#form-area > form > input:focus{
   transition: 0.8s all ease-in-out;
 }
 
+div#signup-content > div#form-area > form > input.invalid{
+  border-bottom: 2px solid #d72215;
+
+}
+
+
 div#signup-content > div#form-area > form > button{
   padding: 10px 40px;
   border-radius: 10px;
@@ -268,6 +276,9 @@ div#signup-content > div#form-area > form > button{
   background: #f9fffaad;
   
 }
+
+
+
 div#signup-content > div#form-area > form > button:hover{
   margin: 20px;
   transition: 1s all ease;
@@ -276,11 +287,39 @@ div#signup-content > div#form-area > form > button:hover{
   color: #E5DBDC;
 }
 
-div#signup-content > div#form-area > form > p#successSignUp{
-  border: 1px solid red;
-  color: #fff5f6;
+div#signup-content > div#form-area > form > p#successMsg{
+  color: #002424;
   display: flex;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
+}
 
+div#signup-content > div#form-area > form > p#successMsg.success{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
+
+div#signup-content > div#form-area > form:valid > p#successMsg.success{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
+
+div#signup-content > div#form-area > form > p#errorMsg{
+  color: #d72215;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+div#signup-content > div#form-area > form:invalid >  p#errorMsg.error{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
+
+div#signup-content > div#form-area > form > p#errorMsg.error{
+  transition: 1s all ease-in;
+  visibility: visible;
+  color: #d72215;
 }
