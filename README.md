@@ -19,7 +19,7 @@ PaperBoy is a web application designed to practice form validation and data hand
 - Data Storage: Utilize localStorage to store user data locally in the browser.
 
 
-## Screenshots
+## Copyrights
 
 [Welcome Page](https://www.rawpixel.com/image/2310614/free-illustration-png-alone-animal-aside)
 *Welcome Page Artwork*
@@ -39,7 +39,7 @@ To run PaperBoy locally on your machine, follow these steps:
 1. Clone the repository to your local system:
 
    ```bash
-   git clone https://github.com/your-username/paperboy.git
+   git clone https://github.com/YasminOE/PaperBoy.git
 2. 
 
 ## Usage
