@@ -285,28 +285,39 @@ div#signup-content > div#form-area > form > button:hover{
   color: #E5DBDC;
 }
 
-div#signup-content > div#form-area > form > p{
+div#signup-content > div#form-area > form > p#successMsg{
   color: #002424;
   display: flex;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
 }
 
+div#signup-content > div#form-area > form > p#successMsg.success{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
 
-div#signup-content > div#form-area > form:invalid > p.error{
+div#signup-content > div#form-area > form:valid > p#successMsg.success{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
+
+div#signup-content > div#form-area > form > p#errorMsg{
+  color: #d72215;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+div#signup-content > div#form-area > form:invalid >  p#errorMsg.error{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
+
+div#signup-content > div#form-area > form > p#errorMsg.error{
   transition: 1s all ease-in;
   visibility: visible;
   color: #d72215;
-  align-items: center;
-  justify-content: center;
-
-}
-
-div#signup-content > div#form-area > form > p.error{
-  transition: 1s all ease-in;
-  visibility: visible;
-  color: #d72215;
-  align-items: center;
-  justify-content: center;
-
 }

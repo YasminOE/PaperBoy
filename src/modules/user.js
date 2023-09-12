@@ -26,42 +26,44 @@ export class UsersManager {
     this.updateLoadUsers();
   }
 }
-function displayErrMessage(){
-  const errorMessages = userForm.querySelector('#successMsg');
-  errorMessages.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> please double-check your registration!';
-  errorMessages.classList.add('error');
+// function displayErrMessage(){
+//   const errorMessages = userForm.querySelector('#successMsg');
+//   errorMessages.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> please double-check your registration!';
+//   errorMessages.classList.add('error');
 
-  return errorMessages;
-}
+//   return errorMessages;
+// }
 
-export function validateForm() {
-  const userForm = document.querySelector('.sign-form');
-  const inputFields = userForm.querySelectorAll('input');
-  const errorMessages = userForm.querySelector('#successMsg');
-  let valid = true;
+// export function validateForm() {
+//   const userForm = document.querySelector('.sign-form');
+//   const inputFields = userForm.querySelectorAll('input');
+//   const errorMessages = userForm.querySelector('#successMsg');
+//   let valid = true;
 
-  inputFields.forEach(inputField => {
-    if(inputField.value == ''){
-      inputField.classList.add('invalid');
-      errorMessages.setCustomValidity(displayErrMessage());
-      valid = false;
-      console.log('I am working');
-    }
-    else if (!inputField.checkValidity()) {
-      inputField.classList.add('invalid');
-      errorMessages.setCustomValidity(displayErrMessage());
-      console.log('I am working');
-      error.push('not the value we are looking for');
-      valid = false;
-    }
-     else {
-      inputField.classList.remove('invalid'); // Remove 'invalid' class on valid input
-      console.log('things looks good');
-    }
-  });
+//   inputFields.forEach(inputField => {
+//     if(inputField.value == ''){
+//       inputField.classList.add('invalid');
+//       errorMessages.setCustomValidity(displayErrMessage());
+//       valid = false;
+//       console.log('I am working');
+//     }
+//     else if (!inputField.checkValidity()) {
+//       inputField.classList.add('invalid');
+//       errorMessages.setCustomValidity(displayErrMessage());
+//       console.log('I am working');
+//       error.push('not the value we are looking for');
+//       valid = false;
+//     }
+//      else {
+//       inputField.classList.remove('invalid'); // Remove 'invalid' class on valid input
+//       console.log('things looks good');
+//     }
+//   });
 
-  return valid;
-}
+//   return valid;
+// }
+
+
 
 
 export function registerUser(userManager, form) {
@@ -90,11 +92,8 @@ export default function formsHandler() {
   const theManger = new UsersManager();
   // const theSuccessMsg = document.querySelector('#successMsg');
   // const theSignBtn = document.querySelector('.sign-up-btn');
-  const theSignForm = document.querySelector('.sign-form');
-
-  validateForm();
 
   registerUser(theManger, theSignForm);
   
-  return { validateForm , registerUser}; // Placeholder for now
+  return {registerUser}; // Placeholder for now
 }
