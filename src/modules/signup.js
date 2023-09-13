@@ -1,5 +1,5 @@
 import loadLogin from "./login";
-import { loadSuccess } from "../succuss";
+import { loadSuccess } from "./succuss";
 import signupHandler ,{ UsersManager, errorMessages, registerUser, User } from "./user";
 function createSignupPage(){
   // areas

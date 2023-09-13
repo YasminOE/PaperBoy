@@ -1,7 +1,6 @@
 import loadSignup from "./signup";
-import loadSuccess from './success'; // Import loadSuccess at the top
+import { loadSuccess } from "./succuss";
 import { UsersManager } from "./user";
-import _ from "lodash";
 
 
 function createLoginPage(){
@@ -104,7 +103,6 @@ function validateLogin(usersManager) {
     const foundUser = usersData.find((user) => {
       return user.email === emailInput.value && user.password === passwordInput.value;
     });
-      // const success = loadSuccess(foundUser.fullName);
 
     if (foundUser) {
       // Successful login
@@ -112,20 +110,10 @@ function validateLogin(usersManager) {
       passwordInput.classList.remove('error');
       message.classList.remove('error');
       console.log('Successful login');
-
+      
       
       // // Load and execute the loadSuccess.js file with the user's fullName
-            // import('./loadSuccess').then(({ default: loadSuccess }) =>
-            // {
-        // window.location.href='./index.html'
-
-        //  form.submit().catch(()=>{window.location.reload(loadSuccess(success, foundUser.fullName))});
-                                      
-    // Dynamically load success.js
-    import('./success').then((module) => {
-      const loadSuccess = module.default;
-      loadSuccess(foundUser.fullName); // Call loadSuccess with the user's fullName
-    })
+      // loadSuccess(foundUser.fullName);
 
     } else {
       // Invalid login

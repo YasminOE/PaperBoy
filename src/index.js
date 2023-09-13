@@ -1,10 +1,9 @@
-//index.js
 import './style.css';
 import { loadPage } from './modules/initial-load-page';
 import loadLogin from './modules/login';
 import loadSignup from './modules/signup';
 import formsHandler, { UsersManager , registerUser } from './modules/user';
-import { loadSuccess } from './succuss';
+import { loadSuccess } from './modules/succuss';
 
 
 init();
@@ -16,7 +15,7 @@ function addNavEvents() {
   signUpBtn.addEventListener('click', loadSignup);
 
   logInBtn.addEventListener('click',loadLogin);
-  
+
 }
 
 function init() {
@@ -24,6 +23,7 @@ function init() {
   addNavEvents();
   // loadSignup();
   // loadLogin();
+
 }
 
 
