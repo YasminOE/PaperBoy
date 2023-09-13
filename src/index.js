@@ -19,11 +19,10 @@ function addNavEvents() {
 }
 
 function init() {
-  // loadPage();
-  // addNavEvents();
+  loadPage();
+  addNavEvents();
   // loadSignup();
   // loadLogin();
-  loadSuccess();
 
 }
 

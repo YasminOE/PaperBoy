@@ -60,7 +60,7 @@ function createButtonSec(){
 
 
 
-export function loadSuccess(uName){
+export default function loadSuccess(uName){
   const content = document.getElementById('content');
 
   const main = createSuccessPage();

@@ -27,6 +27,17 @@ export class UsersManager {
     this.users.push(user);
     this.updateLoadUsers();
   }
+
+  loadUsersForLogin() {
+    const usersLoginInfo = this.users.map(user => ({
+      fullName: user.fullName,
+      email: user.email,
+      password: user.password,
+    }));
+    console.log('Users info for login:', usersLoginInfo);
+    return usersLoginInfo;
+  }
+  
 }
 
 

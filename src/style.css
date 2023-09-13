@@ -129,6 +129,19 @@ div#login-content > div#form-area > form{
   gap: 30px;
 }
 
+div#login-content > div#form-area > form > p#errorMsg{
+  color: #d72215;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+div#login-content > div#form-area > form >  p#errorMsg.error{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
+
 div#login-content > div#form-area > form > input{
   padding:15px 60px;
   margin: 20px 0;
@@ -145,6 +158,13 @@ div#login-content > div#form-area > form > input:focus{
   border-radius: 7px;
   transition: 0.8s all ease-in-out;
 }
+
+div#login-content > div#form-area > form > input.error{
+  transition: 0.8s all ease-in-out;
+  border-bottom: 2px solid #d72215;
+}
+
+
 
 div#login-content > div#form-area > form > button{
   padding: 10px 40px;

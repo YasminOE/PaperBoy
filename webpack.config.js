@@ -13,6 +13,9 @@ module.exports = {
 
     new CleanWebpackPlugin(),
   ],
+  resolve: {
+    extensions: ['.js'], // Ensure that .js files can be resolved without specifying the extension
+  },
   module: {
     rules: [
       {
