@@ -1,20 +1,23 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const _ = require('lodash'); // Import lodash
+const _ = require('lodash'); // Use require instead of import
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js', //  main entry point
+    success: './src/succuss.js', // New entry point for success.js
+  },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
 
     new CleanWebpackPlugin(),
   ],
   resolve: {
-    extensions: ['.js'], // Ensure that .js files can be resolved without specifying the extension
+    extensions: ['.js'],
   },
   module: {
     rules: [
@@ -23,25 +26,24 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-         test: /\.html$/,
-         use: ["html-loader"],
-     },
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-  use: {
-    loader: 'file-loader',
-    options: {
-      name: '[name].[ext]',
-      outputPath: 'imgs/', // Specify the output directory for images
-      publicPath: 'imgs/', // Specify the public path for images
-    },
-  },
-         },
-     {
-       test: /\.(woff|woff2|eot|ttf|otf)$/i,
-       type: 'asset/resource',
-     },
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'imgs/',
+            publicPath: 'imgs/',
+          },
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
 };
-

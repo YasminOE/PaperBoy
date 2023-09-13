@@ -1,4 +1,4 @@
-import { create } from "lodash";
+import _ from "lodash";
 
 function createSuccessPage(){
   const mainPage = document.createElement('div');
@@ -57,9 +57,6 @@ function createButtonSec(){
   return buttonsUl;
 }
 
-
-
-
 export default function loadSuccess(uName){
   const content = document.getElementById('content');
 
@@ -75,7 +72,6 @@ export default function loadSuccess(uName){
   const buttons = createButtonSec();
   main.appendChild(buttons);
 
-
   const welcomeText = `Welcome, ${uName}`;
 
   const text = document.getElementById('welcome-text');
@@ -85,8 +81,6 @@ export default function loadSuccess(uName){
     // Call the typeWriter function here, when the DOM is fully loaded
     typeWriter(welcomeText);
   });
-
-  // ...
 
   function typeWriter(fullText) {
     const speed = 50;
@@ -109,3 +103,13 @@ export default function loadSuccess(uName){
 }
 
 
+
+
+
+  // const logout = document.getElementById('logout-btn');
+  // logout.addEventListener('click', () => {
+  //        import('../index').then((module) => {
+  //       const loadSuccess = module.default;
+  //       loadSuccess(foundUser.fullName);
+  //     });
+  // })
