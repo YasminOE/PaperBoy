@@ -2,29 +2,38 @@ import { create } from "lodash";
 
 function createSuccessPage(){
   const mainPage = document.createElement('div');
-  mainPage.setAttribute('id', 'sucssess-page');
+  mainPage.setAttribute('id', 'success-page');
   return mainPage;
 }
 
 function createMainContent(){
   const logo = document.createElement('img');
   Object.assign(logo, {
-    id: 'logo',
-    alt: 'logo image',
+    id: 'welcome-img',
+    alt: 'welcome image',
   })
-  logo.src ='imgs/loginB.png';
+  logo.src ='imgs/loginA.png';
   return logo;
 }
 
-function createTextSec(uName){
+function createTextSec(){
 
+  const textContainer = document.createElement('div');
+  textContainer.setAttribute('id', 'text-container')
   const welcomeText = document.createElement('p');
   Object.assign(welcomeText,{
     id:'welcome-text',
   });
-  welcomeText.innerHTML = `Welcome, ${uName}`;
+  // welcomeText.innerHTML = `Welcome, ${uName}`;
+  textContainer.appendChild(welcomeText);
 
-  return welcomeText;
+  const guideText = document.createElement('p')
+  Object.assign (guideText ,{
+    id: 'guide-text'
+  })
+  guideText.innerHTML = 'Complete setting up your account with just a few clicks';
+  textContainer.appendChild(guideText);
+  return textContainer;
 }
 
 
@@ -36,38 +45,67 @@ function createButtonSec(){
   const logoutBtn = document.createElement('button');
   logoutBtn.setAttribute('id', 'logout-btn');
   logoutBtn.type="submit";
-  logoutBtn.innerHTML = 'Logout';
+  logoutBtn.innerHTML = 'Log out';
   buttonsUl.appendChild(logoutBtn);
   
-  // const logInBtn = document.createElement('button');
-  // logInBtn.setAttribute('id', 'logBtn');
-  // logInBtn.type="submit";
-  // logInBtn.innerHTML = 'Login';
-  // buttonsUl.appendChild(logInBtn);
+  const setUpBtn = document.createElement('button');
+  setUpBtn.setAttribute('id', 'setup-btn');
+  setUpBtn.type="button";
+  setUpBtn.innerHTML = 'Set up';
+  buttonsUl.appendChild(setUpBtn);
 
   return buttonsUl;
 }
 
 
 
+
 export function loadSuccess(uName){
-  uName = 'yasmin';
   const content = document.getElementById('content');
 
   const main = createSuccessPage();
   content.appendChild(main);
 
-  const mainContent = createTextSec(uName);
+  const mainImg = createMainContent();
+  main.appendChild(mainImg);
+
+  const mainContent = createTextSec();
   main.appendChild(mainContent);
 
   const buttons = createButtonSec();
   main.appendChild(buttons);
 
-    // if (uName) {
-    //   return 'success.html';
-    // } else {
-    //   // Handle cases where fullName is undefined
-    //   return 'error.html';
-    // }
+
+  const welcomeText = `Welcome, ${uName}`;
+
+  const text = document.getElementById('welcome-text');
+
+  // Add an event listener for DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    // Call the typeWriter function here, when the DOM is fully loaded
+    typeWriter(welcomeText);
+  });
+
+  // ...
+
+  function typeWriter(fullText) {
+    const speed = 50;
+    let i = 0;
+
+    // Check if the text element exists
+    if (text) {
+      function addNextCharacter() {
+        if (i < fullText.length) {
+          text.textContent += fullText.charAt(i);
+          i++;
+          setTimeout(addNextCharacter, speed);
+        }
+      }
+
+      // Start typing animation
+      addNextCharacter();
+    }
+  }
 }
+
 
