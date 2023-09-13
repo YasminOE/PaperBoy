@@ -1,5 +1,3 @@
-import { create } from "lodash";
-
 function createMainPage(){
   const mainPage = document.createElement('div');
   mainPage.setAttribute('id', 'main-page');
