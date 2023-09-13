@@ -1,5 +1,4 @@
 // user.js
-
 export function User(fullName, email, password, confirmPassword) {
   this.fullName = fullName;
   this.email = email;
@@ -14,91 +13,85 @@ export class UsersManager {
 
   loadUsers() {
     const usersJSON = localStorage.getItem('users');
+    console.log('Loaded Users from localStorage:', usersJSON); // Log the loaded data
     return JSON.parse(usersJSON) || [];
   }
 
   updateLoadUsers() {
     localStorage.setItem('users', JSON.stringify(this.users));
+    console.log('Updated Users in localStorage:', this.users); // Log the updated data
   }
+
 
   addUser(user) {
     this.users.push(user);
     this.updateLoadUsers();
   }
-}
-// function displayErrMessage(){
-//   const errorMessages = userForm.querySelector('#successMsg');
-//   errorMessages.innerHTML = 'Oh, <span class="material-symbols-outlined">sentiment_sad</span> please double-check your registration!';
-//   errorMessages.classList.add('error');
 
-//   return errorMessages;
+  loadUsersForLogin() {
+    const usersLoginInfo = this.users.map(user => ({
+      fullName: user.fullName,
+      email: user.email,
+      password: user.password,
+    }));
+    console.log('Users info for login:', usersLoginInfo);
+    return usersLoginInfo;
+  }
+  
+}
+
+
+// export function registerUser(userManager, form , userFullName , uEmail, uPassword , uConfirmPassword) {
+//   // The form values should be retrieved after the form is submitted
+//   // form.addEventListener('submit', event => {
+//     event.preventDefault(); // Prevent the default form submission
+//     // Retrieve the form values after submission
+//     console.log('we are in signup about to submit values page');
+//      userFullName = form.querySelector('.sign-name').value;
+//      uEmail = form.querySelector('.sign-email').value;
+//      uPassword= form.querySelector('.sign-password').value;
+//      uConfirmPassword = form.querySelector('.confirm-sign-password').value;
+
+//     // if (nameInput && emailInput && passwordInput && confirmPasswordInput) {
+//       // Now you can create the user object and perform further actions
+//       let user = new User(
+//         userFullName,
+//         uEmail,
+//         uPassword,
+//         uConfirmPassword
+//       );
+//       console.log(user);
+//       userManager.addUser(user);
+//       userManager.updateLoadUsers();
+//       console.log(userManager);
+
+//       return user;
 // }
 
-// export function validateForm() {
-//   const userForm = document.querySelector('.sign-form');
-//   const inputFields = userForm.querySelectorAll('input');
-//   const errorMessages = userForm.querySelector('#successMsg');
-//   let valid = true;
+// document.addEventListener('DOMContentLoaded', () => {
+//   // Your code here
+//   formsHandler();
+// });
 
-//   inputFields.forEach(inputField => {
-//     if(inputField.value == ''){
-//       inputField.classList.add('invalid');
-//       errorMessages.setCustomValidity(displayErrMessage());
-//       valid = false;
-//       console.log('I am working');
-//     }
-//     else if (!inputField.checkValidity()) {
-//       inputField.classList.add('invalid');
-//       errorMessages.setCustomValidity(displayErrMessage());
-//       console.log('I am working');
-//       error.push('not the value we are looking for');
-//       valid = false;
-//     }
-//      else {
-//       inputField.classList.remove('invalid'); // Remove 'invalid' class on valid input
-//       console.log('things looks good');
-//     }
-//   });
 
-//   return valid;
+// export default function formsHandler() {
+//   const theManager = new UsersManager();
+//   const theSignForm = document.querySelector('.sign-form'); // Add this line to get the form element
+
+//   const newUser = new User('Gin', 'test@gmail.com', '123', '123');
+//   console.log(newUser);
+
+//   theManager.addUser(newUser);
+
+//   console.log(theManager);
+
+//   // You should check if the form exists before calling registerUser
+//   if (theSignForm) {
+//     registerUser(theManager, theSignForm, theName, theEmail, thePassword, theConfirmedPass);
+//   } else {
+//     console.log('The signup form does not exist on this page.');
+//   }
+
+//   return { registerUser };
 // }
-
-
-
-
-export function registerUser(userManager, form) {
-  form = document.querySelector('.sign-form');
-  if (form) {
-    console.log('we are in signup page');
-    let nameInput = form.querySelector('.sign-name');
-    let emailInput = form.querySelector('.sign-email');
-    let passwordInput = form.querySelector('.sign-password');
-    let confirmPasswordInput = form.querySelector('.confirm-sign-password');
-  
-    let user = new User(nameInput.value, emailInput.value,passwordInput.value, confirmPasswordInput.value);
-  
-    userManager.addUser(user);
-    userManager.updateLoadUsers();
-    console.log(userManager);
-  
-    return user;
-
-  }else{
-  console.log('we are not in signup page yet');
-  }
-}
-
-export default function formsHandler() {
-  const theManager = new UsersManager();
-  const theSignForm = document.querySelector('.sign-form'); // Add this line to get the form element
-
-  // You should check if the form exists before calling registerUser
-  if (theSignForm) {
-    registerUser(theManager, theSignForm);
-  } else {
-    console.log('The signup form does not exist on this page.');
-  }
-
-  return { registerUser };
-}
 

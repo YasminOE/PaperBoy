@@ -1,11 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const _ = require('lodash'); // Import lodash
+const _ = require('lodash');
 
 module.exports = {
   entry: './src/index.js',
-
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
@@ -13,6 +12,9 @@ module.exports = {
 
     new CleanWebpackPlugin(),
   ],
+  resolve: {
+    extensions: ['.js'], // Ensure that .js files can be resolved without specifying the extension
+  },
   module: {
     rules: [
       {

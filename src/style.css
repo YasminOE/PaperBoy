@@ -129,6 +129,19 @@ div#login-content > div#form-area > form{
   gap: 30px;
 }
 
+div#login-content > div#form-area > form > p#errorMsg{
+  color: #d72215;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+div#login-content > div#form-area > form >  p#errorMsg.error{
+  transition: 1s all ease-in;
+  visibility: visible;
+}
+
 div#login-content > div#form-area > form > input{
   padding:15px 60px;
   margin: 20px 0;
@@ -145,6 +158,13 @@ div#login-content > div#form-area > form > input:focus{
   border-radius: 7px;
   transition: 0.8s all ease-in-out;
 }
+
+div#login-content > div#form-area > form > input.error{
+  transition: 0.8s all ease-in-out;
+  border-bottom: 2px solid #d72215;
+}
+
+
 
 div#login-content > div#form-area > form > button{
   padding: 10px 40px;
@@ -322,4 +342,84 @@ div#signup-content > div#form-area > form > p#errorMsg.error{
   transition: 1s all ease-in;
   visibility: visible;
   color: #d72215;
+}
+
+
+
+
+
+/* Success Page */
+
+div#content > div#success-page {
+  height: 100vh;
+  background: #E5DBDC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#content > div#success-page > #welcome-img {
+  width: 30%;
+  height: auto;
+  margin: 10px;
+}
+
+div#content > div#success-page >div#text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* border: 1px solid red; */
+}
+
+div#content > div#success-page > div#text-container  > p#welcome-text {
+  margin: 10px;
+  font-size: 2.5rem;
+
+}
+
+div#content > div#success-page > div#text-container >  p#guide-text {
+  font-size: 1.2rem;
+  margin: 10px;
+  font-weight: 300;
+}
+
+div#content >div#success-page > ul#buttonsUl{
+  padding: 30px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+div#content > div#success-page > ul#buttonsUl > button{
+  padding: 10px 40px;
+  border-radius: 10px;
+  cursor: url('imgs/newspaper.svg'), auto;
+  border: 2px solid #002424;
+
+}
+
+div#content > div#success-page > ul#buttonsUl > button:nth-child(1){
+  color: #002424;
+  background: none;
+
+}
+
+div#content > div#success-page > ul#buttonsUl > button:nth-child(2){
+  color: #002424;
+  background: #f9fffaad;
+  cursor: not-allowed;
+
+}
+
+div#content > div#success-page > ul#buttonsUl > button:hover{
+  margin: 0 10px;
+  transition: 1s all ease;
+  border: 2px solid #9CAC91;
+  background: #9CAC91;
+  color: #E5DBDC;
 }
