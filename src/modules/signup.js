@@ -1,3 +1,4 @@
+import loadLogin from "./login";
 import { loadSuccess } from "./succuss";
 import signupHandler ,{ UsersManager, errorMessages, registerUser, User } from "./user";
 function createSignupPage(){
@@ -38,7 +39,7 @@ function createSignupPage(){
 // form content
   const signForm = document.createElement('form');
   signForm.setAttribute('class', 'sign-form');
-  signForm.action = loadSuccess();
+  // signForm.action = loadSuccess();
   signForm.method = 'POST';
   signForm.name = 'signForm';
   formArea.appendChild(signForm);
@@ -121,6 +122,15 @@ signEmail.classList.add('sign-email');
   
   return signupContent;
 }
+
+function goToLogin(){
+  const line = document.getElementById('account');
+
+  line.addEventListener('click', loadLogin);
+
+  return line;
+}
+
 
 function validateSignForm(formSelector, userManager) {
   formSelector = document.querySelector('.sign-form');
@@ -247,6 +257,8 @@ export default function loadSignup() {
   
       content.textContent = '';
       content.appendChild(signupPage);
+
+      goToLogin();
   
       const form = document.querySelector('.sign-form');
       const manager = new UsersManager();

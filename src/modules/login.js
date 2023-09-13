@@ -1,5 +1,7 @@
+import loadSignup from "./signup";
 import { loadSuccess } from "./succuss";
 import { UsersManager } from "./user";
+
 
 function createLoginPage(){
   // areas
@@ -39,7 +41,7 @@ function createLoginPage(){
 // form content
   const logForm = document.createElement('form');
   logForm.setAttribute('class', 'login-form');
-  logForm.action = '';
+  // logForm.action = loadSuccess;
   logForm.method = 'get';
   logForm.name = 'LoginForm';
   formArea.appendChild(logForm);
@@ -79,10 +81,10 @@ function createLoginPage(){
 return loginContent;
 }
 
-function goToSignUp(signPage){
+function goToSignUp(){
   const line = document.getElementById('no-account');
 
-  line.addEventListener('click', signPage);
+  line.addEventListener('click', loadSignup);
 
   return line;
 }
@@ -130,6 +132,7 @@ export default function loadLogin(){
 
   content.textContent = '';
   content.appendChild(loginPage);
+  goToSignUp();
 
   const theManager = new UsersManager()
   validateLogin(theManager);
