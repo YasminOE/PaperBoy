@@ -412,6 +412,7 @@ div#content > div#success-page > ul#buttonsUl > button:nth-child(1){
 div#content > div#success-page > ul#buttonsUl > button:nth-child(2){
   color: #002424;
   background: #f9fffaad;
+  cursor: not-allowed;
 
 }
 
