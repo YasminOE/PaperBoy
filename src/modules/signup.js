@@ -1,5 +1,5 @@
 import loadLogin from "./login";
-import { loadSuccess } from "./succuss";
+import loadSuccess from "./success";
 import signupHandler ,{ UsersManager, errorMessages, registerUser, User } from "./user";
 function createSignupPage(){
   // areas
@@ -236,7 +236,7 @@ function validateSignForm(formSelector, userManager) {
           console.log(user);
           userManager.updateLoadUsers();
           // console.log(userManager);
-
+            loadSuccess(user.fullName);
           // // Redirect to the success page if needed
           // formElement.submit();
           // successPage = loadSuccess(user.nameInput);
