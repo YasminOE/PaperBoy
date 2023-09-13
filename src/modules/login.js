@@ -1,6 +1,7 @@
+// import _ from "lodash";
 import loadSignup from "./signup";
-import { loadSuccess } from "./succuss";
 import { UsersManager } from "./user";
+import loadSuccess from "./success";
 
 
 function createLoginPage(){
@@ -41,7 +42,7 @@ function createLoginPage(){
 // form content
   const logForm = document.createElement('form');
   logForm.setAttribute('class', 'login-form');
-  // logForm.action = loadSuccess;
+  logForm.action = '#';
   logForm.method = 'get';
   logForm.name = 'LoginForm';
   formArea.appendChild(logForm);
@@ -113,8 +114,9 @@ function validateLogin(usersManager) {
       
       
       // // Load and execute the loadSuccess.js file with the user's fullName
-      // loadSuccess(foundUser.fullName);
-
+      loadSuccess(foundUser.fullName);
+      
+      
     } else {
       // Invalid login
       emailInput.classList.add('error');
@@ -124,6 +126,7 @@ function validateLogin(usersManager) {
     }
   });
 }
+
 
 
 export default function loadLogin(){
