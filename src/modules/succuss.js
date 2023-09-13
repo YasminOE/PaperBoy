@@ -51,6 +51,7 @@ function createButtonSec(){
 
 
 export function loadSuccess(uName){
+  uName = 'yasmin';
   const content = document.getElementById('content');
 
   const main = createSuccessPage();
@@ -62,11 +63,11 @@ export function loadSuccess(uName){
   const buttons = createButtonSec();
   main.appendChild(buttons);
 
-    if (uName) {
-      return 'success.html';
-    } else {
-      // Handle cases where fullName is undefined
-      return 'error.html';
-    }
+    // if (uName) {
+    //   return 'success.html';
+    // } else {
+    //   // Handle cases where fullName is undefined
+    //   return 'error.html';
+    // }
 }
 

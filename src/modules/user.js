@@ -1,5 +1,4 @@
 // user.js
-
 export function User(fullName, email, password, confirmPassword) {
   this.fullName = fullName;
   this.email = email;
@@ -63,16 +62,17 @@ export class UsersManager {
 //   formsHandler();
 // });
 
+
 // export default function formsHandler() {
 //   const theManager = new UsersManager();
 //   const theSignForm = document.querySelector('.sign-form'); // Add this line to get the form element
 
-//   // const newUser = new User('Gin', 'test@gmail.com', '123', '123');
-//   // console.log(newUser);
+//   const newUser = new User('Gin', 'test@gmail.com', '123', '123');
+//   console.log(newUser);
 
-//   // theManager.addUser(newUser);
+//   theManager.addUser(newUser);
 
-//   // console.log(theManager);
+//   console.log(theManager);
 
 //   // You should check if the form exists before calling registerUser
 //   if (theSignForm) {

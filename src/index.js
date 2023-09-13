@@ -5,37 +5,26 @@ import loadSignup from './modules/signup';
 import formsHandler, { UsersManager , registerUser } from './modules/user';
 import { loadSuccess } from './modules/succuss';
 
+
+init();
+
 function addNavEvents() {
   const signUpBtn = document.getElementById('signBtn');
   const logInBtn = document.getElementById('logBtn');
 
-  signUpBtn.addEventListener('click', () => {
-    // Load the signup page
-    loadSignup();
-    const getLogin = document.querySelector('#account');
-    getLogin.addEventListener('click', loadLogin);
-    // const form = document.querySelector('.sign-form');
-    // if(form){
-      
-    // }
+  signUpBtn.addEventListener('click', loadSignup);
 
-  });
+  logInBtn.addEventListener('click',loadLogin);
 
-  logInBtn.addEventListener('click', () => {
-    loadLogin();
-    const getSignup = document.querySelector('#no-account');
-    getSignup.addEventListener('click', loadSignup);
-
-  });
 }
 
 function init() {
-  // loadPage();
-  loadSignup();
+  loadPage();
   addNavEvents();
-  loadSuccess();
-
+  // loadSignup();
+  // loadLogin();
+  // loadSuccess();
 
 }
 
-init();
+
